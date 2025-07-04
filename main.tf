@@ -59,7 +59,7 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_instance" "T3m-Server" {
   ami           = "ami-003c9adf81de74b40"
-  subnet_id     = "subnet2"
+  subnet_id     = aws_subnet.subnet3.id
   instance_type = "t3.micro"
 
   tags = {
@@ -69,7 +69,7 @@ resource "aws_instance" "T3m-Server" {
 
 resource "aws_instance" "T2n-server" {
   ami           = "ami-003c9adf81de74b40"
-  subnet_id     = "subnet3"
+  subnet_id     = aws_subnet.subnet2.id
   instance_type = "t2.nano"
 
   tags = {
