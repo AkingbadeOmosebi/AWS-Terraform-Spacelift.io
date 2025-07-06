@@ -57,15 +57,7 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
-resource "aws_instance" "T3m-Server" {
-  ami           = "ami-003c9adf81de74b40"
-  subnet_id     = aws_subnet.subnet3.id
-  instance_type = "t3.micro"
-
-  tags = {
-    Name = var.T3m-name
-  }
-}
+# This one should succeed
 
 resource "aws_instance" "T2n-server" {
   ami           = "ami-003c9adf81de74b40"
@@ -73,6 +65,18 @@ resource "aws_instance" "T2n-server" {
   instance_type = "t2.nano"
 
   tags = {
-    Name = var.T2n-name
+    Name = var.T2n-name # T2 nano server.
+  }
+}
+
+# This one should fail
+
+resource "aws_instance" "T3m-Server" {
+  ami           = "ami-003c9adf81de74b40"
+  subnet_id     = aws_subnet.subnet3.id
+  instance_type = "t3.micro"
+
+  tags = {
+    Name = var.T3m-name # T3 micro server.
   }
 }
