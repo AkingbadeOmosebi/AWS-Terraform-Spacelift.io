@@ -71,6 +71,8 @@ resource "aws_instance" "T2n-server" {
 
 # This one should fail!
 
+# T3 micro server that wont be allowed.
+
 resource "aws_instance" "T3m-Server" {
   ami           = "ami-003c9adf81de74b40"
   subnet_id     = aws_subnet.subnet3.id
