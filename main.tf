@@ -69,7 +69,7 @@ resource "aws_instance" "T2n-server" {
   }
 }
 
-# This one should fail
+# This one should fail!
 
 resource "aws_instance" "T3m-Server" {
   ami           = "ami-003c9adf81de74b40"
